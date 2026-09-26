@@ -2,9 +2,9 @@
   "schema": "evilkey-manager-release-v1",
   "manager": {
     "version": "1.1.6",
-    "artifact": null,
-    "sha256": null,
-    "frozen_self_test": "not run in this standalone repository"
+    "artifact": "artifacts/manager/EvilKeyManager.exe",
+    "sha256": "f473eab6f08c354b80d870cd0661d29f1b48ed36ba8401ad351b142f3462909a",
+    "frozen_self_test": "ok; USB not opened"
   },
-  "publication_status": "candidate; standalone build and public release pending"
+  "publication_status": "release ready; standalone EXE built and frozen self-test passed; physical USB retest pending"
 }
