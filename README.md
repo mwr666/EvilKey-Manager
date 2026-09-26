@@ -27,6 +27,8 @@ For a source installation, use `manager/install.cmd`, then `manager/start_admin.
 
 I welcome useful suggestions for Manager controls and workflows. Open an issue with the expected behavior and a way to verify it.
 
+Voluntary support is available through [GitHub Sponsors](https://github.com/sponsors/mwr666). Sponsorship is not a software purchase or a kit preorder.
+
 ## License
 
 The original Manager application, artwork and Manager-specific build code are source available for private noncommercial use under [EvilKey Manager License](LICENSE.md). Commercial use requires separate written permission from Michał Wojciechowski. Bundled third-party components retain their own terms in [`manager/licenses/`](manager/licenses/). This Manager license does not alter the firmware's AGPLv3 terms.
