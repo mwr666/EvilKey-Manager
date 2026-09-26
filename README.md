@@ -6,7 +6,8 @@
   <a href="https://github.com/mwr666/EvilKey-firmware">Firmware and device GUI</a> ·
   <strong>Windows Manager</strong> ·
   <a href="https://github.com/mwr666/EvilKey-examples">microSD examples</a> ·
-  <a href="https://hackaday.io/project/206807-evilkey-i-needed-a-fido2-key-then-the-maker-brain-took-over">Hackaday project</a>
+  <a href="https://hackaday.io/project/206807-evilkey-i-needed-a-fido2-key-then-the-maker-brain-took-over">Hackaday project</a> ·
+  <a href="https://www.printables.com/model/1855790-evilkey-v1-enclosure-waveshare-esp32-s3-touch-amol">Printable V1 enclosure</a>
 </p>
 
 <p align="center">
@@ -33,6 +34,7 @@ For a source installation, use `manager/install.cmd`, then `manager/start_admin.
 
 - [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware) — open AGPLv3 firmware, LVGL touch interface and the source used by configuration export.
 - [EvilKey examples](https://github.com/mwr666/EvilKey-examples) — original microSD scripts under separate noncommercial terms.
+- [Printable V1 enclosure](https://www.printables.com/model/1855790-evilkey-v1-enclosure-waveshare-esp32-s3-touch-amol) — digital STL and 3MF case files for the Waveshare PCB V1, sold separately on Printables.
 
 I welcome useful suggestions for Manager controls and workflows. Open an issue with the expected behavior and a way to verify it.
 
