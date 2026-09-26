@@ -5,7 +5,8 @@
 <p align="center">
   <a href="https://github.com/mwr666/EvilKey-firmware">Firmware and device GUI</a> ·
   <strong>Windows Manager</strong> ·
-  <a href="https://github.com/mwr666/EvilKey-examples">microSD examples</a>
+  <a href="https://github.com/mwr666/EvilKey-examples">microSD examples</a> ·
+  <a href="https://hackaday.io/project/206807-evilkey-i-needed-a-fido2-key-then-the-maker-brain-took-over">Hackaday project</a>
 </p>
 
 <p align="center">
