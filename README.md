@@ -16,6 +16,14 @@
 
 The Windows Manager provides FIDO PIN and policy controls, credential management, display settings, firmware configuration export and offline USB Tool data decoding. It connects to EvilKey in its normal FIDO USB role. Firmware source is supplied separately through [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware); the Manager executable does not embed it.
 
+## Interface preview
+
+<p align="center">
+  <a href="docs/github/manager-overview.png"><img src="docs/github/manager-overview.png" alt="EvilKey Manager overview with device selection, PIN confirmation and status cards" width="100%"></a>
+</p>
+
+<p align="center"><sub>The Manager overview shown with in-memory demonstration data; no USB device was connected for this capture.</sub></p>
+
 ## Run and build
 
 For a source installation, use `manager/install.cmd`, then `manager/start_admin.cmd`. The application requires Windows, 64-bit Python with Tk and the pinned packages in `manager/requirements.txt`. To build the portable EXE, run `scripts/build_windows.ps1` from PowerShell. Its frozen self-test does not open USB, though Windows may ask for UAC approval. See [build details](docs/BUILD.md) and the [Manager guide](manager/README.md).
