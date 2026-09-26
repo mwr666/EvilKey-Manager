@@ -1,0 +1,11 @@
+.venv-exe/
+build/
+dist/
+artifacts/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+*.bak
+*.sha256
