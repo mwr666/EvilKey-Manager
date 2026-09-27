@@ -47,6 +47,14 @@ The microSD card is needed for the device's `hello_world.duck` demonstration; FI
 
 <p align="center"><sub>The Manager overview shown with in-memory demonstration data; no USB device was connected for this capture.</sub></p>
 
+### PIN entry on EvilKey
+
+<p align="center">
+  <a href="docs/github/evilkey-on-device-pin-real.jpg"><img src="docs/github/evilkey-on-device-pin-real.jpg" alt="Real EvilKey prototype showing the on-device FIDO2 PIN keypad" width="300"></a>
+</p>
+
+<p align="center"><sub>Real PCB V1 prototype. Compatible built-in user-verification requests use the key's touchscreen; clients may instead request host-side ClientPIN. The Manager's own PIN controls are separate.</sub></p>
+
 ## Run and build
 
 For a source installation, use `manager/install.cmd`, then `manager/start_admin.cmd`. The application requires Windows, 64-bit Python with Tk and the pinned packages in `manager/requirements.txt`. To build the portable EXE, run `scripts/build_windows.ps1` from PowerShell. Its frozen self-test does not open USB, though Windows may ask for UAC approval. See [build details](docs/BUILD.md) and the [Manager guide](manager/README.md).
