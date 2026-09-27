@@ -20,6 +20,8 @@ The Windows Manager provides FIDO PIN and policy controls, credential management
 
 [▶ Watch the real EvilKey device GUI](https://cdn.hackaday.io/files/2068078848030688/evilkey-gui-real-silent.mp4) — silent camera footage of the touchscreen in use on the prototype.
 
+[▶ Watch the real USB Tool script demo](https://cdn.hackaday.io/files/2068078848030688/evilkey-usb-tool-hello-world-real-silent.mp4) — two silent camera takes show deliberate script selection and execution on the key, followed by a harmless Notepad message. USB Tool is a separate device role; this video does not demonstrate a Manager operation.
+
 ## Interface preview
 
 <p align="center">
