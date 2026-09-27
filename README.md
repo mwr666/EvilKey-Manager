@@ -22,6 +22,19 @@ The Windows Manager provides FIDO PIN and policy controls, credential management
 
 [▶ Watch the real USB Tool script demo](https://cdn.hackaday.io/files/2068078848030688/evilkey-usb-tool-hello-world-real-silent.mp4) — two silent camera takes show deliberate script selection and execution on the key, followed by a harmless Notepad message. USB Tool is a separate device role; this video does not demonstrate a Manager operation.
 
+## Hardware for the PCB V1 USB Tool demo
+
+| Quantity | Component |
+| --- | --- |
+| 1 | Waveshare ESP32-S3 Touch AMOLED 1.64, **PCB V1** |
+| 1 | Short data-capable USB-C cable/loop (Unitek C14179ABK-style in the prototype) |
+| 1 | Printed V1 enclosure (the current prototype is home printed) |
+| 4 | M2 × 5 mm screws for the module |
+| 1 | M5 × 10 mm flat-point grub screw for the cable loop |
+| 1 | **FAT32-formatted microSD card** for USB Tool scripts |
+
+The microSD card is needed for the device's `hello_world.duck` demonstration; FIDO2 and Air Mouse work without it. Copy the [public examples](https://github.com/mwr666/EvilKey-examples) `duckyscripts/` tree to the card root; the tested script is `/duckyscripts/test/hello_world.duck`. Card capacity is not specified. The Windows Manager does not require a microSD card for its normal FIDO-role connection. See the [Hackaday component list](https://hackaday.io/project/206807/components).
+
 ## Interface preview
 
 <p align="center">
