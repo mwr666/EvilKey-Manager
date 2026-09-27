@@ -20,7 +20,9 @@ The Windows Manager provides FIDO PIN and policy controls, credential management
 
 [▶ Watch the real EvilKey device GUI](https://cdn.hackaday.io/files/2068078848030688/evilkey-gui-real-silent.mp4) — silent camera footage of the touchscreen in use on the prototype.
 
-[▶ Watch the real USB Tool script demo](https://cdn.hackaday.io/files/2068078848030688/evilkey-usb-tool-hello-world-real-silent.mp4) — two silent camera takes show deliberate script selection and execution on the key, followed by a harmless Notepad message. USB Tool is a separate device role; this video does not demonstrate a Manager operation.
+[▶ Watch the USB Tool Short](https://youtube.com/shorts/k0a0o6s1Ayg) · [Silent MP4 on Hackaday](https://cdn.hackaday.io/files/2068078848030688/evilkey-usb-tool-hello-world-real-silent.mp4)
+
+USB Tool is a separate role selected on the key. A script starts only after selection and **RUN**, never merely on connection. It can send scripted HID input, save results on microSD and use Keystroke Reflection when a mass-storage drive is unavailable; scripts can move files or collect data within host permissions and defenses. The Short shows only a harmless Notepad HID test on the owner's computer, not file transfer or data collection. The Windows Manager does not run the payload; its *USB Tool data* tab inspects saved results offline.
 
 ## Hardware for the PCB V1 USB Tool demo
 
