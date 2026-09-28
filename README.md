@@ -22,6 +22,12 @@ The Windows Manager provides FIDO PIN and policy controls, credential management
 
 [▶ Watch the real-device GUI Short](https://youtube.com/shorts/MK2NCrWpuXo) — silent footage of the touchscreen in use on the prototype, with an animated logo ending. The Windows Manager interface appears below.
 
+## Air Mouse on the device
+
+<p align="center"><a href="https://youtube.com/shorts/b0x_XzGABB8"><img src="https://raw.githubusercontent.com/mwr666/EvilKey-firmware/main/docs/github/evilkey-air-mouse-short-poster.png" alt="Watch the real EvilKey Air Mouse Short" width="420"></a></p>
+
+[▶ Watch the Air Mouse Short](https://youtube.com/shorts/b0x_XzGABB8) — real device footage of hold-to-move pointer steering, touchscreen clicks and scrolling. Air Mouse is a separate USB role; hold **EXIT** on the key to return to the FIDO2 role before connecting the Windows Manager. The Manager does not control the cursor.
+
 [▶ Watch the USB Tool Short](https://youtube.com/shorts/k0a0o6s1Ayg)
 
 USB Tool is a separate role selected on the key. A script starts only after selection and **RUN**, never merely on connection. It can send scripted HID input, save results on microSD and use Keystroke Reflection when a mass-storage drive is unavailable; scripts can move files or collect data within host permissions and defenses. The Short shows only a harmless Notepad HID test on the owner's computer, not file transfer or data collection. The Windows Manager does not run the payload; its *USB Tool data* tab inspects saved results offline.
