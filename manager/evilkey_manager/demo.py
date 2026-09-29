@@ -12,7 +12,7 @@ INFO={'identity':'demo-only','aaguid':'00'*16,'versions':['FIDO_2_0','FIDO_2_1']
       'protocols':[1,2],'pin_retries':8,'uv_retries':8,'power_cycle':False,
       'min_pin_length':4,'force_pin_change':False,'max_rpids':120,'max_msg_size':1024,
       'extensions':['credProtect','hmac-secret'],'remaining_disc_creds':254,
-      'firmware_reported':0x00030000,'vendor_commands':[0x00052b41f53590d3,0x000377913e17951f]}
+      'firmware_reported':0x00040000,'vendor_commands':[0x00052b41f53590d3,0x000377913e17951f]}
 
 class DemoRunner:
     def __init__(self,root,on_progress,on_done):
@@ -42,10 +42,10 @@ class DemoRunner:
                 elif op=='credentials':data={'credentials':list(self.rows),'existing':len(self.rows),'remaining_estimate':256-len(self.rows)}
                 elif op.startswith('display_'):
                     if op=='display_write':self.settings=replace(DisplaySettings.from_dict(args['settings']),revision=self.settings.revision+1)
-                    data={'settings':asdict(self.settings),'firmware':'0.3.0 (demo)','storage_ok':True,'build_flags':11}
+                    data={'settings':asdict(self.settings),'firmware':'0.4.0 (demo)','storage_ok':True,'build_flags':11}
                 elif op.startswith('drive_'):
                     if op=='drive_write':self.drive_read_only=bool(args['read_only'])
-                    data={'settings':{'read_only':self.drive_read_only},'firmware':'0.3.0 (demo)','storage_ok':True,'compiled':True,'enabled':True}
+                    data={'settings':{'read_only':self.drive_read_only},'firmware':'0.4.0 (demo)','storage_ok':True,'compiled':True,'enabled':True}
                 elif op in ('delete_credential','rename_credential'):
                     selected=args['credential']['credential_id']
                     if op=='delete_credential':self.rows=[r for r in self.rows if r['credential_id']!=selected]

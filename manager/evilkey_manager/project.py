@@ -13,7 +13,7 @@ from typing import Any
 from . import __version__
 from .models import DisplaySettings, UserError, integer
 
-# Fixed USB identity of the tested 0.3.0 Air Mouse role. The Manager export
+# Fixed USB identity of the Air Mouse role, first device-tested in 0.3.0. The Manager export
 # replaces FidoConfig.h, so these definitions must accompany every export.
 AIR_MOUSE_USB_DEFINITIONS = {
  "FIDO_V1_AIR_MOUSE_VID": "0xFEFF",
@@ -162,9 +162,10 @@ def export_project(firmware_source: Path,destination: Path,values: dict) -> Path
     try:
         # No user venv, keys or test credential state can enter this copy.
         shutil.copytree(source,stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns(
-            '.cache','__pycache__','.git','.venv*','*.pyc','*.bin','*.elf','build'))
+            '.cache','__pycache__','.git','.venv*','*.pyc','*.bin','*.elf',
+            '*.ekapp','*.wasm','build','build-arduino*','release'))
         (stage/'EvilKeyV1/FidoConfig.h').write_text(render_header(values),encoding='utf-8',newline='\n')
-        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.3.0',
+        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.4.0',
             'manager_release':__version__,'configuration':values,'device_write_performed':False},indent=2)+'\n',encoding='utf-8')
         if destination.exists():raise UserError("The target folder showed up during the export.")
         stage.rename(destination)

@@ -9,3 +9,5 @@ __pycache__/
 *.tmp
 *.bak
 *.sha256
+*.ekapp
+*.wasm

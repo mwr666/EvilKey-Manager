@@ -242,8 +242,25 @@ class ProjectTests(unittest.TestCase):
                 self.assertIn(f'#define {name} {value}',rendered)
             metadata=json.loads((dest/'MANAGER_EXPORT.json').read_text())
             self.assertFalse(metadata['device_write_performed'])
-            self.assertEqual(metadata['source_release'],'0.3.0')
+            self.assertEqual(metadata['source_release'],'0.4.0')
             self.assertEqual(metadata['manager_release'],'1.1.6')
+
+    def test_export_excludes_app_packages_and_build_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base=Path(directory);source=base/'source';destination=base/'export'
+            (source/'EvilKeyV1/src/apps').mkdir(parents=True)
+            (source/'prepare_arduino.py').write_text('# synthetic source\n')
+            (source/'EvilKeyV1/src/apps/ek_vm.c').write_text('/* interpreter */\n')
+            (source/'EvilKeyV1/private.ekapp').write_bytes(b'private app')
+            (source/'build-arduino/apps-tests').mkdir(parents=True)
+            (source/'build-arduino/apps-tests/guest.wasm').write_bytes(b'guest')
+            (source/'release').mkdir()
+            (source/'release/private.ekapp').write_bytes(b'private app')
+            export_project(source,destination,DEFAULTS)
+            self.assertTrue((destination/'EvilKeyV1/src/apps/ek_vm.c').is_file())
+            self.assertFalse((destination/'EvilKeyV1/private.ekapp').exists())
+            self.assertFalse((destination/'build-arduino').exists())
+            self.assertFalse((destination/'release').exists())
     def test_frozen_manager_finds_separate_firmware_next_to_exe(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)
@@ -330,7 +347,7 @@ class IntegrationTests(unittest.TestCase):
         out=mod.button_source('#include "ws_board.h"\n(uint32_t)FIDO_V1_PRESENCE_TIMEOUT_SECONDS * 1000u');self.assertIn('ws_settings_presence_timeout_ms()',out)
     def test_new_sources_in_generation(self):
         text=(ROOT/'firmware/prepare_arduino.py').read_text()
-        for part in ['ws_settings_codec.c','ws_settings_store.c','glob("*.inc")','"0.3.0"',"card_worker.c.inc"]:self.assertIn(part,text)
+        for part in ['ws_settings_codec.c','ws_settings_store.c','glob("*.inc")','"0.4.0"',"card_worker.c.inc"]:self.assertIn(part,text)
     def test_fido_worker_stack_is_static_and_launch_failure_is_reported(self):
         usb=(ROOT/'firmware/EvilKeyV1/src/engine/sdk/src/usb/usb.c').read_text()
         header=(ROOT/'firmware/EvilKeyV1/src/engine/sdk/src/usb/usb.h').read_text()
