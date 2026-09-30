@@ -18,6 +18,11 @@
 
 The Windows Manager provides FIDO PIN and policy controls, credential management, display settings, firmware configuration export and offline USB Tool data decoding. It connects to EvilKey in its normal FIDO USB role. This source candidate exports EvilKey firmware 0.5.0 configuration; the existing v1.1.6 GitHub Release executable predates this source update. Firmware source is supplied separately through [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware); the Manager executable does not embed it or any separately licensed app package.
 
+The prepared 0.5.0 source export retains the firmware's Apps interpreter and
+microSD save fix. It excludes app packages, bytecode, build output and release
+assets. The exact 0.5.0 firmware binary passed the device smoke check. The
+Manager's existing v1.1.6 executable is unchanged by this source update.
+
 <p align="center"><a href="https://youtube.com/shorts/MK2NCrWpuXo"><img src="https://raw.githubusercontent.com/mwr666/EvilKey-firmware/main/docs/github/evilkey-gui-short-poster.png" alt="Watch the real EvilKey touch GUI Short" width="420"></a></p>
 
 [▶ Watch the real-device GUI Short](https://youtube.com/shorts/MK2NCrWpuXo) — silent footage of the touchscreen in use on the prototype, with an animated logo ending. The Windows Manager interface appears below.

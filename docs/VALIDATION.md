@@ -9,6 +9,13 @@ interpreter and contained no `.ekapp` or `.wasm` files. This change remains
 local preparation; the existing v1.1.6 executable and GitHub Release are
 unchanged. No physical USB test was performed for this Manager change.
 
+After the firmware's PSRAM and microSD save fix, an export from the corrected
+standalone public-source tree preserved `ek_vm.c`, `ek_service.cpp` and
+Wasm3's `m3_core.c` byte-for-byte. The export contained no `.ekapp`, `.wasm`
+or firmware release asset. The 84 Manager host tests passed (11 skipped for
+the absent bundled firmware). This verifies source export only; the public
+firmware release and a new Manager executable have not been published.
+
 ## Earlier 1.1.6 build
 
 The standalone Windows build from this repository produced a 30,594,234-byte
