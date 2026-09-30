@@ -165,7 +165,7 @@ def export_project(firmware_source: Path,destination: Path,values: dict) -> Path
             '.cache','__pycache__','.git','.venv*','*.pyc','*.bin','*.elf',
             '*.ekapp','*.wasm','build','build-arduino*','release'))
         (stage/'EvilKeyV1/FidoConfig.h').write_text(render_header(values),encoding='utf-8',newline='\n')
-        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.4.0',
+        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.5.0',
             'manager_release':__version__,'configuration':values,'device_write_performed':False},indent=2)+'\n',encoding='utf-8')
         if destination.exists():raise UserError("The target folder showed up during the export.")
         stage.rename(destination)

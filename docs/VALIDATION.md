@@ -1,5 +1,16 @@
 # Manager 1.1.6 validation
 
+## Firmware 0.5.0 source-export candidate
+
+The Manager source now labels a new configuration export as firmware 0.5.0.
+The 84 host tests passed (11 skipped because bundled firmware is absent). A
+temporary export of the standalone 0.5.0 firmware retained the ABI v4
+interpreter and contained no `.ekapp` or `.wasm` files. This change remains
+local preparation; the existing v1.1.6 executable and GitHub Release are
+unchanged. No physical USB test was performed for this Manager change.
+
+## Earlier 1.1.6 build
+
 The standalone Windows build from this repository produced a 30,594,234-byte
 `EvilKeyManager.exe` with SHA-256
 `21d3f5b49cf2cfc63686103e36977ed02e7062d2dcdf6d9ed0177681af9f7e47`.

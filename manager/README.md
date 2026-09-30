@@ -2,7 +2,7 @@
 
 The Windows Manager provides local device information, FIDO PIN and policy controls, credential management, display settings, firmware configuration export, and USB Tool data decoding. The header mark is static; the 3D logo beside the device name on Overview is animated.
 
-Firmware export uses the separately distributed firmware 0.4.0 source and includes the Air Mouse USB identity; its initial values match that source's `FidoConfig.h`. Put the `firmware/` directory beside the EXE or select it when prompted. The EXE does not embed firmware or app source. Air Mouse pointer preferences are set on the key. Exit the mouse-only USB role to reconnect Manager in FIDO mode.
+This source candidate exports configuration for the separately distributed firmware 0.5.0 source and includes the Air Mouse USB identity; its initial values match that source's `FidoConfig.h`. Put the `firmware/` directory beside the EXE or select it when prompted. The EXE does not embed firmware or app source. Air Mouse pointer preferences are set on the key. Exit the mouse-only USB role to reconnect Manager in FIDO mode.
 
 Run `scripts/build_windows.ps1` from the repository root to build and test the EXE. A source installation can use `install.cmd` followed by `start_admin.cmd`; `demo.cmd` opens an in-memory preview without USB. The USB worker requires pinned `fido2==2.2.1`. The GUI does not store PINs or PIN/UV tokens. A write is never retried automatically after a connection error because it may already have reached the key.
 
