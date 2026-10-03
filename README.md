@@ -16,12 +16,9 @@
 
 # EvilKey Manager
 
-The Windows Manager provides FIDO PIN and policy controls, credential management, display settings, firmware configuration export and offline USB Tool data decoding. It connects to EvilKey in its normal FIDO USB role. This source candidate exports EvilKey firmware 0.5.0 configuration; the existing v1.1.6 GitHub Release executable predates this source update. Firmware source is supplied separately through [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware); the Manager executable does not embed it or any separately licensed app package.
+The Windows Manager **1.1.6** provides FIDO PIN/policy controls, credential management, display settings, firmware configuration export and offline USB Tool decoding. It connects in the normal FIDO USB role. This source now targets **firmware 0.6.0**, including its launcher and BLE controls. Exit BLE Gamepad, BLE AirMouse or USB AirMouse to return to FIDO before connecting Manager.
 
-The prepared 0.5.0 source export retains the firmware's Apps interpreter and
-microSD save fix. It excludes app packages, bytecode, build output and release
-assets. The exact 0.5.0 firmware binary passed the device smoke check. The
-Manager's existing v1.1.6 executable is unchanged by this source update.
+Firmware source is downloaded separately from [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware). The EXE contains no firmware or game source. The existing public 1.1.6 executable and its release are retained. This update synchronizes source configuration/version labels; it does not imply a rebuilt EXE. Run the updated source installation for configuration export with current labels. Its checks open no USB.
 
 <p align="center"><a href="https://youtube.com/shorts/MK2NCrWpuXo"><img src="https://raw.githubusercontent.com/mwr666/EvilKey-firmware/main/docs/github/evilkey-gui-short-poster.png" alt="Watch the real EvilKey touch GUI Short" width="420"></a></p>
 
@@ -45,7 +42,7 @@ USB Tool is a separate role selected on the key. A script starts only after sele
 
 I needed a FIDO2 key. It now runs falling blocks and pinball. Apparently I was left unsupervised. This silent Short shows **EvilBlocks and EvilPinball on the real PCB V1 prototype**: select an app from microSD, press **RUN**, then play using the touchscreen. The captions and 3D logo/glitch outro are edited; the gameplay is filmed during development, rather than a benchmark of the latest app builds.
 
-Apps are independent `.ekapp` packages in `/evilkey/apps/`, launched through **Settings → Apps** in the normal FIDO USB role. [Firmware 0.5.0 and its MIT SDK](https://github.com/mwr666/EvilKey-firmware/releases/tag/v0.5.0) provide ABI v4 with two touch contacts, accelerometer data, image assets and per-app microSD saves. Game packages have separate licenses and are not bundled in the public firmware, Manager or USB Tool examples repositories.
+Firmware **0.6.0** runs independent ABI v4 `.ekapp` packages from `/evilkey/apps/`. Swipe left from Home for the animated Apps screen, up/down for 3×3 icon pages and tap an app to run it. Packages require names/icons and the shared corner exit profile; app state is saved beside the package as `<id>.save`. Updates within the supported ABI only replace a file on the card. Game source/packages remain separately licensed and are not included here. The tested PCB V1 reports one touch contact. [Latest firmware and MIT SDK](https://github.com/mwr666/EvilKey-firmware/releases/tag/v0.6.0). The video shows the earlier launch flow used when filmed.
 
 What app would you put on a device like this? Useful tools and gloriously unnecessary experiments are welcome.
 

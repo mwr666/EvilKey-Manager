@@ -42,10 +42,10 @@ class DemoRunner:
                 elif op=='credentials':data={'credentials':list(self.rows),'existing':len(self.rows),'remaining_estimate':256-len(self.rows)}
                 elif op.startswith('display_'):
                     if op=='display_write':self.settings=replace(DisplaySettings.from_dict(args['settings']),revision=self.settings.revision+1)
-                    data={'settings':asdict(self.settings),'firmware':'0.5.0 (demo)','storage_ok':True,'build_flags':11}
+                    data={'settings':asdict(self.settings),'firmware':'0.6.0 (demo)','storage_ok':True,'build_flags':11}
                 elif op.startswith('drive_'):
                     if op=='drive_write':self.drive_read_only=bool(args['read_only'])
-                    data={'settings':{'read_only':self.drive_read_only},'firmware':'0.5.0 (demo)','storage_ok':True,'compiled':True,'enabled':True}
+                    data={'settings':{'read_only':self.drive_read_only},'firmware':'0.6.0 (demo)','storage_ok':True,'compiled':True,'enabled':True}
                 elif op in ('delete_credential','rename_credential'):
                     selected=args['credential']['credential_id']
                     if op=='delete_credential':self.rows=[r for r in self.rows if r['credential_id']!=selected]

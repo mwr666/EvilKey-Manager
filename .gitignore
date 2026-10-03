@@ -11,3 +11,7 @@ __pycache__/
 *.sha256
 *.ekapp
 *.wasm
+
+.cache/
+
+release/
