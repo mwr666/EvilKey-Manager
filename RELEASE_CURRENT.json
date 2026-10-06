@@ -6,6 +6,6 @@
     "sha256": "f473eab6f08c354b80d870cd0661d29f1b48ed36ba8401ad351b142f3462909a",
     "frozen_self_test": "ok; USB not opened"
   },
-  "publication_status": "Source configuration labels synchronized with firmware 0.6.0; existing public Manager 1.1.6 executable retained without replacement.",
-  "firmware_source_version": "0.6.0"
+  "publication_status": "Source configuration labels synchronized with accepted firmware 0.6.1; existing public Manager 1.1.6 executable retained without replacement.",
+  "firmware_source_version": "0.6.1"
 }
