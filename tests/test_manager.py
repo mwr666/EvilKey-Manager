@@ -242,7 +242,7 @@ class ProjectTests(unittest.TestCase):
                 self.assertIn(f'#define {name} {value}',rendered)
             metadata=json.loads((dest/'MANAGER_EXPORT.json').read_text())
             self.assertFalse(metadata['device_write_performed'])
-            self.assertEqual(metadata['source_release'],'0.6.1')
+            self.assertEqual(metadata['source_release'],'0.7.4')
             self.assertEqual(metadata['manager_release'],'1.1.6')
 
     def test_export_excludes_app_packages_and_build_outputs(self):
@@ -347,7 +347,7 @@ class IntegrationTests(unittest.TestCase):
         out=mod.button_source('#include "ws_board.h"\n(uint32_t)FIDO_V1_PRESENCE_TIMEOUT_SECONDS * 1000u');self.assertIn('ws_settings_presence_timeout_ms()',out)
     def test_new_sources_in_generation(self):
         text=(ROOT/'firmware/prepare_arduino.py').read_text()
-        for part in ['ws_settings_codec.c','ws_settings_store.c','glob("*.inc")','"0.6.1"',"card_worker.c.inc"]:self.assertIn(part,text)
+        for part in ['ws_settings_codec.c','ws_settings_store.c','glob("*.inc")','"0.7.4"',"card_worker.c.inc"]:self.assertIn(part,text)
     def test_fido_worker_stack_is_static_and_launch_failure_is_reported(self):
         usb=(ROOT/'firmware/EvilKeyV1/src/engine/sdk/src/usb/usb.c').read_text()
         header=(ROOT/'firmware/EvilKeyV1/src/engine/sdk/src/usb/usb.h').read_text()

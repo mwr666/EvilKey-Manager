@@ -193,7 +193,7 @@ class Actions:
                 self.firmware=firmware
             values=self.project_values();parent=filedialog.askdirectory(parent=self.root,title="Select a place to save the project")
             if not parent:return
-            name='EvilKey_0.6.1_'+datetime.now().strftime('%Y%m%d_%H%M%S');dest=Path(parent)/name
+            name='EvilKey_0.7.4_'+datetime.now().strftime('%Y%m%d_%H%M%S');dest=Path(parent)/name
             export_project(firmware,dest,values)
             self.progress("The project is ready for compilation. To apply the settings, upload firmware to the key.")
             messagebox.showinfo('Project exported',str(dest)+"\n\nSee README_MANAGER.md. Build the project in Arduino IDE and upload it without erasing device storage.",parent=self.root)
