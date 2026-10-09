@@ -24,6 +24,10 @@ Firmware source is downloaded separately from [EvilKey firmware](https://github.
 
 [▶ Watch the real-device GUI Short](https://youtube.com/shorts/MK2NCrWpuXo) — silent footage of the touchscreen in use on the prototype, with an animated logo ending. The Windows Manager interface appears below.
 
+<p align="center"><a href="https://youtu.be/3SmAGgwEm9s"><img src="https://raw.githubusercontent.com/mwr666/EvilKey-firmware/main/docs/github/evilkey-interface-tour-poster.jpg" alt="Watch the EvilKey 0.7.4 host-rendered interface tour" width="420"></a></p>
+
+[▶ Watch the EvilKey 0.7.4 Interface Tour](https://youtu.be/3SmAGgwEm9s) — a guided look at the device screens rendered from firmware running on a desktop host, with EvilBundle gameplay captured in the host app runtime. It does not demonstrate Windows Manager operations; the Short above shows the physical prototype.
+
 ## Air Mouse on the device
 
 <p align="center"><a href="https://youtube.com/shorts/b0x_XzGABB8"><img src="https://raw.githubusercontent.com/mwr666/EvilKey-firmware/main/docs/github/evilkey-air-mouse-short-poster.png" alt="Watch the real EvilKey Air Mouse Short" width="420"></a></p>
