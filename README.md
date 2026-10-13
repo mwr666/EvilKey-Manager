@@ -16,7 +16,7 @@
 
 # EvilKey Manager
 
-The Windows Manager **1.1.6** provides FIDO PIN/policy controls, credential management, display settings, firmware configuration export and offline USB Tool decoding. It connects in the normal FIDO USB role. This source now targets **firmware 0.7.6**, including the Jet GUI, ABI v5 native scenes, launcher and BLE controls. Exit BLE Gamepad, BLE AirMouse or USB AirMouse to return to FIDO before connecting Manager.
+The Windows Manager **1.1.6** provides FIDO PIN/policy controls, credential management, display settings, firmware configuration export and offline USB Tool decoding. It connects in the normal FIDO USB role. This source now targets **firmware 0.8.0**, including the Jet GUI, ABI v5 native scenes, launcher and BLE controls. Exit BLE Gamepad, BLE AirMouse or USB AirMouse to return to FIDO before connecting Manager.
 
 Firmware source is downloaded separately from [EvilKey firmware](https://github.com/mwr666/EvilKey-firmware). The EXE contains no firmware or game source. The existing public 1.1.6 executable and its release are retained. This update synchronizes source configuration/version labels; it does not imply a rebuilt EXE. Run the updated source installation for configuration export with current labels. Its checks open no USB.
 
@@ -38,13 +38,14 @@ Firmware source is downloaded separately from [EvilKey firmware](https://github.
 
 USB Tool is a separate role selected on the key. A script starts only after selection and **RUN**, never merely on connection. It can send scripted HID input, save results on microSD and use Keystroke Reflection when a mass-storage drive is unavailable; scripts can move files or collect data within host permissions and defenses. The Short shows only a harmless Notepad HID test on the owner's computer, not file transfer or data collection. The Windows Manager does not run the payload; its *USB Tool data* tab inspects saved results offline.
 
-## Firmware 0.7.6 compatibility
+## Firmware 0.8.0 compatibility
 
-Firmware 0.7.6 adds shared SIMD rendering and microSD models for independent apps.
-Diagnostics is off after startup and can be enabled in Settings. ABI v4/v5 and
-the Manager protocol remain compatible. Manager stays at 1.1.6; this source snapshot
-updates configuration-export and demo labels. The existing public executable
-remains available from its original release.
+Firmware 0.8.0 provides separate **PCB V1 and V1.1** profiles and guided
+installation. Confirmed V1.1 compatibility begins with this version. Normal
+updates preserve internal data; fresh modules require explicit ERASE.
+The Manager protocol and ABI v4/v5 remain compatible. Manager stays at **1.1.6**;
+this source snapshot updates configuration-export and demo labels. The existing
+public executable remains available from its original release.
 
 ## Watch Apps on the real device
 
@@ -54,7 +55,7 @@ remains available from its original release.
 
 I needed a FIDO2 key. It now runs falling blocks and pinball. Apparently I was left unsupervised. This silent Short shows **EvilBlocks and EvilPinball on the real PCB V1 prototype**: select an app from microSD, press **RUN**, then play using the touchscreen. The captions and 3D logo/glitch outro are edited; the gameplay is filmed during development, rather than a benchmark of the latest app builds.
 
-Firmware **0.7.6** runs independent ABI v4/v5 `.ekapp` packages from `/evilkey/apps/`. Swipe left from Home for the animated Apps screen, up/down for 3×3 icon pages and tap an app to run it. Packages require names/icons and the shared corner exit profile; app state is saved beside the package as `<id>.save`. Updates within the supported ABI only replace a file on the card. Game source/packages remain separately licensed and are not included here. The tested PCB V1 reports one touch contact. [Latest firmware and MIT SDK](https://github.com/mwr666/EvilKey-firmware/releases/tag/v0.7.6). The video shows the earlier launch flow used when filmed.
+Firmware **0.8.0** runs independent ABI v4/v5 `.ekapp` packages from `/evilkey/apps/`. Swipe left from Home for the animated Apps screen, up/down for 3×3 icon pages and tap an app to run it. Packages require names/icons and the shared corner exit profile; app state is saved beside the package as `<id>.save`. Updates within the supported ABI only replace a file on the card. Game source/packages remain separately licensed and are not included here. The tested PCB V1 reports one touch contact. [Latest firmware and MIT SDK](https://github.com/mwr666/EvilKey-firmware/releases/tag/v0.8.0). The video shows the earlier launch flow used when filmed.
 
 What app would you put on a device like this? Useful tools and gloriously unnecessary experiments are welcome.
 
