@@ -32,9 +32,12 @@ def main() -> int:
         loot = subprocess.run([sys.executable, '-m', 'unittest', 'tests.test_loot', '-v'], cwd=ROOT)
         if loot.returncode:
             return loot.returncode
-        flash = subprocess.run([sys.executable, '-m', 'unittest', 'tests.test_flash_arduino', '-v'], cwd=ROOT)
-        if flash.returncode:
-            return flash.returncode
+        if (ROOT / 'tests' / 'test_flash_arduino.py').is_file():
+            flash = subprocess.run([sys.executable, '-m', 'unittest', 'tests.test_flash_arduino', '-v'], cwd=ROOT)
+            if flash.returncode:
+                return flash.returncode
+        else:
+            print('Firmware uploader tests are provided by EvilKey-firmware.', flush=True)
     sys.path.insert(0, str(ROOT / 'tests'))
     ids = list(cases(unittest.defaultTestLoader.loadTestsFromName('test_gui')))
     ids = ids[args.start:args.start + args.limit] if args.limit else ids[args.start:]
