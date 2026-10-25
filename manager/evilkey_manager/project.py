@@ -150,6 +150,57 @@ def render_header(values: dict[str,Any]) -> str:
     out.extend(f"#define {name} {value}" for name,value in AIR_MOUSE_USB_DEFINITIONS.items())
     return "\n".join(out)+"\n"
 
+def public_project_files(source: Path):
+    """Validate the standalone firmware's explicit portable source allowlist."""
+    root=source.parent
+    manifest=root/'PUBLIC_EXPORT_FILES.json'
+    if not manifest.is_file():return None
+    if manifest.is_symlink() or manifest.stat().st_size>4*1024*1024:
+        raise UserError('Invalid public project manifest.')
+    try:record=json.loads(manifest.read_text(encoding='utf-8-sig'))
+    except (ValueError,UnicodeError):raise UserError('Invalid public project manifest.') from None
+    if record.get('schema')!='evilkey-public-project-export/1':
+        raise UserError('Unsupported public project manifest.')
+    names=record.get('files');optional=record.get('optional_files',{})
+    if not isinstance(names,list) or not 1<=len(names)<=10000 or not isinstance(optional,dict):
+        raise UserError('Invalid public project file list.')
+    if any(not isinstance(n,str) for n in names) or len(names)!=len(set(names)) or set(names)&set(optional):
+        raise UserError('Duplicate or invalid public project member.')
+    result=[]
+    forbidden={'.git','.evilkey','.flash-backups','.cache','__pycache__','build',
+        'build-native','build-workflow','release','artifacts','specs','cad',
+        'manager','microSD_EVILKEY_EXAMPLES'}
+    fixtures={'firmware/native/0.9.1/verification/'+n for n in
+        ('partitions.bin','pcb-v1.loader.bin','pcb-v1.1.loader.bin','signer-public.pem')}
+    bundles={'firmware/native/0.9.1/dependencies.zip'}
+    for name in [*names,*optional]:
+        if not isinstance(name,str):raise UserError('Invalid public project member.')
+        rel=Path(name)
+        if not name or '\\' in name or rel.is_absolute() or '..' in rel.parts or ':' in name or rel.as_posix()!=name:
+            raise UserError('Unsafe public project member.')
+        suffix=rel.suffix.lower()
+        if (any(p in forbidden or p.startswith('.venv') for p in rel.parts)
+            or rel.name.lower().startswith('.env') or rel.name=='local-build.json'
+            or suffix in ('.key','.p12','.pfx','.ekbackup','.ekapp','.wasm','.save','.elf','.exe')
+            or (suffix in ('.bin','.pem') and name not in fixtures)
+            or (suffix=='.zip' and name not in bundles)):
+            raise UserError('Private or generated files cannot enter a public project export.')
+        path=root/rel
+        if not path.resolve().is_relative_to(root.resolve()) or any(
+            p.is_symlink() or getattr(p,'is_junction',lambda:False)()
+            for p in (path,*path.parents) if p==root or root in p.parents):
+            raise UserError('Linked or escaping public project member.')
+        if name in optional and not path.exists():continue
+        if not path.is_file():raise UserError('Public project source is incomplete: '+name)
+        if name in optional:
+            expected=optional[name]
+            if not isinstance(expected,str) or hashlib.sha256(path.read_bytes()).hexdigest()!=expected:
+                raise UserError('Optional native dependency bundle checksum differs.')
+        result.append((name,path))
+    result.append(('PUBLIC_EXPORT_FILES.json',manifest))
+    return result
+
+
 def export_project(firmware_source: Path,destination: Path,values: dict) -> Path:
     """Create a NEW complete project. Never merge into an existing folder."""
     validate_config(values)
@@ -158,14 +209,23 @@ def export_project(firmware_source: Path,destination: Path,values: dict) -> Path
     if destination.is_relative_to(source):raise UserError("The export folder must be outside the sources of firmware.")
     if not(source/"prepare_arduino.py").is_file():raise UserError("Firmware source is unavailable. Place the separate firmware source package beside the Manager or choose its firmware folder.")
     if not destination.parent.is_dir():raise UserError("The parent export folder does not exist.")
+    complete=public_project_files(source)
+    if complete is not None and destination.is_relative_to(source.parent):
+        raise UserError('The export folder must be outside the complete public project.')
     stage=Path(tempfile.mkdtemp(prefix='.evilkey-project-',dir=destination.parent))
     try:
         # No user venv, keys or test credential state can enter this copy.
-        shutil.copytree(source,stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns(
-            '.cache','__pycache__','.git','.venv*','*.pyc','*.bin','*.elf',
-            '*.ekapp','*.wasm','build','build-arduino*','release'))
-        (stage/'EvilKeyV1/FidoConfig.h').write_text(render_header(values),encoding='utf-8',newline='\n')
-        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.8.1',
+        if complete is None:
+            shutil.copytree(source,stage,dirs_exist_ok=True,ignore=shutil.ignore_patterns(
+                '.cache','__pycache__','.git','.venv*','*.pyc','*.bin','*.elf',
+                '*.ekapp','*.wasm','build','build-arduino*','release'))
+        else:
+            for name,path in complete:
+                target=stage/name;target.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copy2(path,target)
+        header=stage/('firmware/EvilKeyV1/FidoConfig.h' if complete is not None else 'EvilKeyV1/FidoConfig.h')
+        header.write_text(render_header(values),encoding='utf-8',newline='\n')
+        (stage/'MANAGER_EXPORT.json').write_text(json.dumps({'source_release':'0.9.1',
             'manager_release':__version__,'configuration':values,'device_write_performed':False},indent=2)+'\n',encoding='utf-8')
         if destination.exists():raise UserError("The target folder showed up during the export.")
         stage.rename(destination)

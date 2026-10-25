@@ -29,6 +29,9 @@ def main() -> int:
         core = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_manager.py', '-v'], cwd=ROOT)
         if core.returncode:
             return core.returncode
+        native = subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_native_project_export.py', '-v'], cwd=ROOT)
+        if native.returncode:
+            return native.returncode
         loot = subprocess.run([sys.executable, '-m', 'unittest', 'tests.test_loot', '-v'], cwd=ROOT)
         if loot.returncode:
             return loot.returncode
